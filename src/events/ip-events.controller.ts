@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { IpDto } from '../dtos/event-dtos/product-data.dto';
 
 @Controller('event')
 @ApiTags('IP Events')
@@ -42,7 +43,7 @@ export class IpEventController {
   @Post(EventsEnum.IP_CREATED)
   async createIP(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IP: object },
+    @Body() requestBody: IpDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class IpEventController {
   @Post(EventsEnum.IP_UPDATED)
   async updateIP(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IP: object },
+    @Body() requestBody: IpDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class IpEventController {
   @Post(EventsEnum.IP_DELETED)
   async deleteIp(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IP: object },
+    @Body() requestBody: IpDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

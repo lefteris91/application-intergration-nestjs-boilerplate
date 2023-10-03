@@ -8,10 +8,10 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { Type } from 'class-transformer'; // Import class-transformer for nested validation
-import { DurationEnum } from '../enums/duration.enum';
-import { ActionsEnum } from '../enums/actions.enum';
-import { PricesDto } from './price.dto';
-import { ItemAddonDto } from './item-addon.dto';
+import { DurationEnum } from '../../enums/duration.enum';
+import { ActionsEnum } from '../../enums/actions.enum';
+import { PricesDto } from '../price.dto';
+import { ItemAddonDto } from '../item-addon.dto';
 
 export class ItemDto {
   @IsString()

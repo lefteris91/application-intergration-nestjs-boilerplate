@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { MessageDto } from '../dtos/event-dtos/message.dto';
 
 @Controller('event')
 @ApiTags('Message Events')
@@ -42,7 +43,7 @@ export class MessageEventController {
   @Post(EventsEnum.MESSAGE_CREATED)
   async createMessage(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { message: object },
+    @Body() requestBody: MessageDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class MessageEventController {
   @Post(EventsEnum.MESSAGE_UPDATED)
   async updateMessage(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { message: object },
+    @Body() requestBody: MessageDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class MessageEventController {
   @Post(EventsEnum.MESSAGE_DELETED)
   async deleteMessage(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { message: object },
+    @Body() requestBody: MessageDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

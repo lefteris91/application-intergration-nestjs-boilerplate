@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { ItemDto } from '../dtos/item.dto';
+import { ItemDto } from '../dtos/event-dtos/item.dto';
 
 @Controller('event')
 @ApiTags('Item Events')

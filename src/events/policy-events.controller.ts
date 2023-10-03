@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { PoliciesDto } from '../dtos/event-dtos/policy.dto';
 
 @Controller('event')
 @ApiTags('Policy Events')
@@ -42,7 +43,7 @@ export class PolicyEventController {
   @Post(EventsEnum.POLICY_CREATED)
   async createPolicy(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { policy: object },
+    @Body() requestBody: PoliciesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class PolicyEventController {
   @Post(EventsEnum.POLICY_UPDATED)
   async updatePolicy(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { policy: object },
+    @Body() requestBody: PoliciesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class PolicyEventController {
   @Post(EventsEnum.POLICY_DELETED)
   async deletePolicy(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { policy: object },
+    @Body() requestBody: PoliciesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

@@ -12,7 +12,7 @@ import {
   IsMongoId,
   Matches,
 } from 'class-validator';
-import { CountryEnum } from '../enums/country.enum';
+import { CountryEnum } from '../../enums/country.enum';
 
 export class InvoiceContactDto {
   @IsMongoId()

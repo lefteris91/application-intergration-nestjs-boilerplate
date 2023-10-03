@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { NotificationDto } from '../dtos/event-dtos/notification/request.dto';
 
 @Controller('event')
 @ApiTags('Notification Events')
@@ -42,7 +43,7 @@ export class NotificationEventController {
   @Post(EventsEnum.NOTIFICATION_SENT)
   async notificationSent(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { notification: object },
+    @Body() requestBody: NotificationDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

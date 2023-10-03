@@ -6,11 +6,11 @@ import {
   IsIP,
   IsNumber,
 } from 'class-validator';
-import { DurationEnum } from '../enums/duration.enum';
-import { IpTypeEnum } from '../enums/ip-type.enum';
+import { DurationEnum } from '../../enums/duration.enum';
+import { IpTypeEnum } from '../../enums/ip-type.enum';
 import { ApiProperty } from '@nestjs/swagger';
 
-class IpDto {
+export class IpDto {
   @IsIP()
   @IsDefined()
   @ApiProperty({

@@ -13,11 +13,11 @@ import { AuthGuard } from '../auth/auth.guard';
 import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
 import { ApiExceptionFilter } from '../api.exception.filter';
 import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
-import { InvoiceContactDto } from '../dtos/invoice-contact.dto';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { ProductDataDto } from '../dtos/product-data.dto';
+import { ProductDataDto } from '../dtos/event-dtos/product-data.dto';
+
 
 @Controller('event')
 @ApiTags('Product Events')
@@ -67,7 +67,7 @@ export class ProductEventController {
   @Post(EventsEnum.PRODUCT_UPDATED)
   async updateProduct(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: InvoiceContactDto,
+    @Body() requestBody: ProductDataDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -90,7 +90,7 @@ export class ProductEventController {
   @Post(EventsEnum.PRODUCT_DELETED)
   async deleteProduct(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: InvoiceContactDto,
+    @Body() requestBody: ProductDataDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

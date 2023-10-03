@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { CurrencyDto } from '../dtos/event-dtos/currency.dto';
 
 @Controller('event')
 @ApiTags('Currency Events')
@@ -42,7 +43,7 @@ export class CurrencyEventController {
   @Post(EventsEnum.CURRENCY_CREATED)
   async createCurrency(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CurrencyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class CurrencyEventController {
   @Post(EventsEnum.CURRENCY_UPDATED)
   async updateCurrency(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CurrencyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class CurrencyEventController {
   @Post(EventsEnum.CURRENCY_DELETED)
   async deleteCurrency(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CurrencyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

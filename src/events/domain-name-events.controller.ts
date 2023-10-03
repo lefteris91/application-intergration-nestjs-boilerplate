@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { DomainNameDto } from '../dtos/event-dtos/domain-name.dto';
 
 @Controller('event')
 @ApiTags('Domain Name Events')
@@ -42,7 +43,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_CREATED)
   async createDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_UPDATED)
   async updateDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_DELETED)
   async deleteDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -111,7 +112,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_LOCKED)
   async lockDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -134,7 +135,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_UNLOCKED)
   async unlockDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -157,7 +158,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_SHIELD_ACTIVATED)
   async activateShieldToDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -180,7 +181,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_SHIELD_DEACTIVATED)
   async deactivateShieldToDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -203,7 +204,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_BUNDLE_ADDED)
   async addBundleToDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -226,7 +227,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_BUNDLE_REMOVED)
   async removeBundleFromDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -249,7 +250,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_REGISTRANT_UPDATED)
   async updateRegistrantFromDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -272,7 +273,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_ADMIN_UPDATED)
   async updateAdminFromDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -295,7 +296,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_TECH_UPDATED)
   async techUpdateFromDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -318,7 +319,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_BILLING_UPDATED)
   async billingUpdateFromDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -341,7 +342,7 @@ export class DomainNameEventController {
   @Post(EventsEnum.DOMAIN_NAME_ADDITIONAL_UPDATED)
   async additionalUpdateDomainName(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainNameDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

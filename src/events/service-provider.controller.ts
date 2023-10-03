@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { ServiceProviderDto } from '../dtos/event-dtos/service-provider.dto';
 
 @Controller('event')
 @ApiTags('Service Provider Events')
@@ -42,7 +43,7 @@ export class ServiceProviderEventController {
   @Post(EventsEnum.SERVICE_PROVIDER_CREATED)
   async createServiceProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: ServiceProviderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class ServiceProviderEventController {
   @Post(EventsEnum.SERVICE_PROVIDER_UPDATED)
   async updateServiceProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: ServiceProviderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class ServiceProviderEventController {
   @Post(EventsEnum.SERVICE_PROVIDER_DELETED)
   async deleteServiceProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: ServiceProviderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -111,7 +112,7 @@ export class ServiceProviderEventController {
   @Post(EventsEnum.SERVICE_PROVIDER_INSTALLED)
   async installServiceProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: ServiceProviderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -134,7 +135,7 @@ export class ServiceProviderEventController {
   @Post(EventsEnum.SERVICE_PROVIDER_UNINSTALLED)
   async unistallServiceProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: ServiceProviderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { OrderDto } from '../dtos/event-dtos/order.dto';
 
 @Controller('event')
 @ApiTags('Order Events')
@@ -42,7 +43,7 @@ export class OrderEventController {
   @Post(EventsEnum.ORDER_CREATED)
   async createOrder(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { order: object },
+    @Body() requestBody: OrderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -180,7 +181,7 @@ export class OrderEventController {
   @Post(EventsEnum.ORDER_DELETED)
   async deleteOrder(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { order: object },
+    @Body() requestBody: OrderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -203,7 +204,7 @@ export class OrderEventController {
   @Post(EventsEnum.ORDER_PAID)
   async payOrder(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { order: object },
+    @Body() requestBody: OrderDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

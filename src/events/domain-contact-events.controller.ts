@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { DomainContactDto } from '../dtos/event-dtos/domain-contact.dto';
 
 @Controller('event')
 @ApiTags('Domain Contact Events')
@@ -42,7 +43,7 @@ export class DomainContactEventController {
   @Post(EventsEnum.DOMAIN_CONTACT_CREATED)
   async createDomainContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainContactDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class DomainContactEventController {
   @Post(EventsEnum.DOMAIN_CONTACT_UPDATED)
   async updateDomainContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainContactDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class DomainContactEventController {
   @Post(EventsEnum.DOMAIN_CONTACT_DELETED)
   async deleteDomainContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainContactDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

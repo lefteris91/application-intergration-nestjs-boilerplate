@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { PaymentMethodsDto } from '../dtos/payment-methods.dto';
 
 @Controller('event')
 @ApiTags('Payment Events')
@@ -42,7 +43,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_CREATED)
   async createPayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_CANCELED)
   async cancelPayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_FAILED)
   async failPayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -111,7 +112,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_SUBSCRIBED)
   async subscribePayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -134,7 +135,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_UNSUBSCRIBED)
   async unsubscribePayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -157,7 +158,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_UPDATED)
   async updatePayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -180,7 +181,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_DELETED)
   async deletePayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -203,7 +204,7 @@ export class PaymentEventController {
   @Post(EventsEnum.PAYMENT_COMPLETED)
   async completePayment(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: PaymentMethodsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

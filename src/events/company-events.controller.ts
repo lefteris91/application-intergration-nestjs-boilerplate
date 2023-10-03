@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { CompanyDto } from '../dtos/event-dtos/company.dto';
 
 @Controller('event')
 @ApiTags('Company Events')
@@ -42,7 +43,7 @@ export class CompanyEventController {
   @Post(EventsEnum.COMPANY_CREATED)
   async createCompany(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CompanyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class CompanyEventController {
   @Post(EventsEnum.COMPANY_UPDATED)
   async updateCompany(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CompanyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class CompanyEventController {
   @Post(EventsEnum.COMPANY_DELETED)
   async deleteCompany(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CompanyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -111,7 +112,7 @@ export class CompanyEventController {
   @Post(EventsEnum.COMPANY_PROVIDER_ATTACHED)
   async attachProviderToCompany(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CompanyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -134,7 +135,7 @@ export class CompanyEventController {
   @Post(EventsEnum.COMPANY_PROVIDER_DETACHED)
   async detachProviderToCompany(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: CompanyDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

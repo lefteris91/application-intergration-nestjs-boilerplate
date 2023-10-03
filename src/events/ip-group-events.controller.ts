@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { IpGroupDto } from '../dtos/event-dtos/ip-group.dto';
 
 @Controller('event')
 @ApiTags('IP Group Events')
@@ -42,7 +43,7 @@ export class IpGroupEventController {
   @Post(EventsEnum.IP_GROUP_CREATED)
   async createIPGroup(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IPGroup: object },
+    @Body() requestBody: IpGroupDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class IpGroupEventController {
   @Post(EventsEnum.IP_GROUP_UPDATED)
   async updateIPGroup(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IPGroup: object },
+    @Body() requestBody: IpGroupDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class IpGroupEventController {
   @Post(EventsEnum.IP_GROUP_DELETED)
   async deleteIpGroup(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { IPGroup: object },
+    @Body() requestBody: IpGroupDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

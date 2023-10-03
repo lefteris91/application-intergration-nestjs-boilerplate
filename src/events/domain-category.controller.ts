@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { DomainCategoryDto } from '../dtos/event-dtos/domain-category.dto';
 
 @Controller('event')
 @ApiTags('Domain Category Events')
@@ -42,7 +43,7 @@ export class DomainCategoryEventController {
   @Post(EventsEnum.DOMAIN_CATEGORY_CREATED)
   async createDomainCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainCategoryDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class DomainCategoryEventController {
   @Post(EventsEnum.DOMAIN_CATEGORY_UPDATED)
   async updateDomainCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainCategoryDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class DomainCategoryEventController {
   @Post(EventsEnum.DOMAIN_CATEGORY_DELETED)
   async deleteDomainCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: object,
+    @Body() requestBody: DomainCategoryDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

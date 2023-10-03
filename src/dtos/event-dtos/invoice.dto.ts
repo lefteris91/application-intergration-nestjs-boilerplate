@@ -10,7 +10,7 @@ import {
 import { Type } from 'class-transformer'; // Import class-transformer for nested validation
 import { InvoiceContactDto } from './invoice-contact.dto';
 import { ItemDto } from './item.dto';
-import { PaymentMethodsDto } from './payment-methods.dto';
+import { PaymentMethodsDto } from '../payment-methods.dto';
 
 export class InvoiceDto {
   @IsNotEmpty()

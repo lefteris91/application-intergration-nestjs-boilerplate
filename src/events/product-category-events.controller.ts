@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { ProductCategoriesDto } from '../dtos/event-dtos/product-category.dto';
 
 @Controller('event')
 @ApiTags('Product Category Events')
@@ -42,7 +43,7 @@ export class ProductCategoryEventController {
   @Post(EventsEnum.PRODUCT_CATEGORY_CREATED)
   async createProductCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { productCategory: object },
+    @Body() requestBody: ProductCategoriesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class ProductCategoryEventController {
   @Post(EventsEnum.PRODUCT_CATEGORY_UPDATED)
   async updateProductCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { productCategory: object },
+    @Body() requestBody: ProductCategoriesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class ProductCategoryEventController {
   @Post(EventsEnum.PRODUCT_CATEGORY_DELETED)
   async deleteProductCategory(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { productCategory: object },
+    @Body() requestBody: ProductCategoriesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
