@@ -6,7 +6,7 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { JwtPayloadRequest } from 'src/dtos/jwt-payload.request';
+import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 
 @Injectable()
 export class senderIsHoster implements NestInterceptor {
