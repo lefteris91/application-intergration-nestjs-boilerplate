@@ -18,7 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle(`Hoster Applications Integration Boilerplate - OpenAPI 3.0`)
     .addTag('Info')
-    .addTag('Applications')
+    .addTag('Events')
     .setTermsOfService('http://hosterpointer.io/terms') //here you can set your terms of service if you have any
     .setContact('', '', 'info@hoster.com') //here you can set a contact email
     .setDescription('')

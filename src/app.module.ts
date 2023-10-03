@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { EventController } from './event.controller';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { HttpModule } from '@nestjs/axios';
     }),
     HttpModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, EventController],
   providers: [AppService],
 })
 export class AppModule {}
