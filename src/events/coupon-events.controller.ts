@@ -20,12 +20,12 @@ import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Coupon Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class CouponEventController {
   @ApiResponse({
     status: 200,
     description: 'Coupon created successfully',

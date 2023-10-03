@@ -20,12 +20,12 @@ import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Order Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class OrderEventController {
   @ApiResponse({
     status: 201,
     description: 'Order created successfully',

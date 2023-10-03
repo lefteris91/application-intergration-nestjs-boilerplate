@@ -1,31 +1,28 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Request,
-  Body,
   Controller,
-  HttpCode,
-  Post,
-  UseFilters,
   UseGuards,
   UseInterceptors,
+  UseFilters,
+  HttpCode,
+  Post,
+  Body,
 } from '@nestjs/common';
-import { AuthGuard } from '../auth/auth.guard';
-import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, getSchemaPath } from '@nestjs/swagger';
 import { ApiExceptionFilter } from '../api.exception.filter';
+import { AuthGuard } from '../auth/auth.guard';
 import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
-import { InvoiceContactDto } from '../dtos/invoice-contact.dto';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
-import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Addon Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class AddonEventController {
   @ApiResponse({
     status: 200,
     description: 'Addon created successfully',

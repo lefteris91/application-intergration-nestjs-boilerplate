@@ -20,12 +20,12 @@ import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Policy Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class PolicyEventController {
   @ApiResponse({
     status: 201,
     description: 'Policy created successfully',

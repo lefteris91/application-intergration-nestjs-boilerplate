@@ -18,14 +18,15 @@ import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
+import { InvoiceDto } from '../dtos/invoice.dto';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Invoice Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class InvoiceEventController {
   @ApiResponse({
     status: 201,
     description: 'Contact created successfully',
@@ -41,10 +42,10 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.INVOICE_CONTACT_CREATED)
+  @Post(EventsEnum.INVOICE_CREATED)
   async createContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: InvoiceContactDto,
+    @Body() requestBody: InvoiceDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -64,10 +65,10 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.INVOICE_CONTACT_UPDATED)
+  @Post(EventsEnum.INVOICE_UPDATED)
   async updateContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: InvoiceContactDto,
+    @Body() requestBody: InvoiceDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -87,10 +88,10 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.INVOICE_CONTACT_DELETED)
+  @Post(EventsEnum.INVOICE_DELETED)
   async deleteContact(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: InvoiceContactDto,
+    @Body() requestBody: InvoiceDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

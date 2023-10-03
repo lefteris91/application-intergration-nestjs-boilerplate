@@ -20,12 +20,12 @@ import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Domain Category Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class DomainCategoryEventController {
   @ApiResponse({
     status: 200,
     description: 'Domain category created successfully',

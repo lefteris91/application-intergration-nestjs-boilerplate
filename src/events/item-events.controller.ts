@@ -21,12 +21,12 @@ import { EventsEnum } from '../enums/events.enum';
 import { ItemDto } from '../dtos/item.dto';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Item Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class ItemEventController {
   @ApiResponse({
     status: 201,
     description: 'Item created successfully',

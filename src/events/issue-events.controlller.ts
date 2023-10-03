@@ -20,12 +20,12 @@ import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Issue Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class IssueEventController {
   @ApiResponse({
     status: 201,
     description: 'Issue created successfully',
@@ -94,5 +94,4 @@ export class EventController {
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
 }

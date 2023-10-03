@@ -21,12 +21,12 @@ import { EventsEnum } from '../enums/events.enum';
 import { ProductDataDto } from '../dtos/product-data.dto';
 
 @Controller('event')
-@ApiTags('Events')
+@ApiTags('Product Events')
 @UseGuards(AuthGuard)
 @UseInterceptors(senderIsHoster)
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
-export class EventController {
+export class ProductEventController {
   @ApiResponse({
     status: 201,
     description: 'Product created successfully',
@@ -92,6 +92,75 @@ export class EventController {
   async deleteProduct(
     @Request() request: Request & JwtPayloadRequest,
     @Body() requestBody: InvoiceContactDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product auto renewed successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_AUTO_RENEW_UPDATED)
+  async autoRenewProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product enabled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_ENABLED)
+  async enableProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product disabled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_DISABLED)
+  async disableProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
