@@ -13,10 +13,8 @@ import { AuthGuard } from '../auth/auth.guard';
 import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
 import { ApiExceptionFilter } from '../api.exception.filter';
 import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
-import { InvoiceContactDto } from '../dtos/invoice-contact.dto';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
-import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 import { ItemDto } from '../dtos/item.dto';
 

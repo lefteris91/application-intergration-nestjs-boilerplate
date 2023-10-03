@@ -16,7 +16,6 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { InvoiceContactDto } from '../dtos/invoice-contact.dto';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
-import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
 import { ProductDataDto } from '../dtos/product-data.dto';
 
