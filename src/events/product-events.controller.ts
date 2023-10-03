@@ -18,7 +18,6 @@ import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
 import { ProductDataDto } from '../dtos/event-dtos/product-data.dto';
 
-
 @Controller('event')
 @ApiTags('Product Events')
 @UseGuards(AuthGuard)

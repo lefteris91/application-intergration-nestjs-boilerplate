@@ -1,13 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString, IsUrl } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class MenuItemDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({
     type: String,
-    description: "The label or name for the tab",
-    example: "Home",
+    description: 'The label or name for the tab',
+    example: 'Home',
   })
   label: string;
 
@@ -16,8 +16,8 @@ export class MenuItemDto {
   @IsUrl()
   @ApiProperty({
     type: String,
-    description: "The URL associated with the tab",
-    example: "https://example.com/home",
+    description: 'The URL associated with the tab',
+    example: 'https://example.com/home',
   })
   url: string;
 }

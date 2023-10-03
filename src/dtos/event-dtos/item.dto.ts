@@ -1,128 +1,271 @@
-import { ApiProperty } from '@nestjs/swagger';
 import {
+  ApiResponseProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
+import {
+  IsMongoId,
   IsOptional,
   IsString,
   IsEnum,
+  IsObject,
+  IsDefined,
+  IsBoolean,
+  IsNumber,
   IsArray,
-  ValidateNested,
-  IsNotEmpty,
+  IsDateString,
 } from 'class-validator';
-import { Type } from 'class-transformer'; // Import class-transformer for nested validation
-import { DurationEnum } from '../../enums/duration.enum';
 import { ActionsEnum } from '../../enums/actions.enum';
-import { PricesDto } from '../price.dto';
+import { DurationEnum } from '../../enums/duration.enum';
 import { ItemAddonDto } from '../item-addon.dto';
+import { PricesDto } from '../price.dto';
+import { CurrencyDto } from './currency.dto';
+import { ProductCategoryDto } from './product-category.dto';
+import { ProductDataDto } from './product-data.dto';
+import { AffiliateDto } from './affiliate.dto';
 
 export class ItemDto {
-  @IsString()
-  @ApiProperty({
+  @IsMongoId()
+  @IsOptional()
+  @ApiResponseProperty({
     type: String,
-    required: true,
     example: '5ce45d7606444f199acfba1e',
-    description: 'The unique identifier for the item.',
   })
-  id: string;
-
-  @IsString()
-  @ApiProperty({
-    type: String,
-    required: true,
-    example: '5ce45d7606444f199acfba1e',
-    description: 'The product ID associated with the item.',
-  })
-  product_id: string;
-
-  @IsString()
-  @ApiProperty({
-    type: String,
-    required: true,
-    example: 'Bronze Plesk',
-    description: 'The name of the product.',
-  })
-  product_name: string;
+  id?: string;
 
   @IsOptional()
-  @IsEnum(ActionsEnum)
-  @ApiProperty({
+  @ApiResponseProperty({
+    type: String,
+  })
+  companyId?: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+    example: 'Bronze plesk',
+  })
+  name?: string;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+    example: 'PRODUCT',
+  })
+  type?: string; //stringItemTypeEnum;
+
+  @IsOptional()
+  @IsMongoId()
+  @ApiResponseProperty({
+    type: String,
+    example: '5ce45d7606444f199acfba1e',
+  })
+  orderId?: string;
+
+  @IsOptional()
+  @ApiResponseProperty({
     enum: ActionsEnum,
-    required: false,
-    description: 'The action associated with the item.',
   })
   action?: ActionsEnum;
 
-  @IsString()
-  @ApiProperty({
-    type: String,
-    required: true,
-    example: 'Product',
-    description: 'The title of the category.',
-  })
-  category_title: string;
-
-  @IsString()
-  @ApiProperty({
-    type: String,
-    required: true,
-    example: '684sdfgs68d7f9sd',
-    description: 'The ID of the category.',
-  })
-  category_id: string;
+  @IsOptional()
+  @ApiResponseProperty()
+  parentOrderId?: string;
 
   @IsOptional()
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => ItemAddonDto)
-  @ApiProperty({
+  @ApiResponseProperty({
+    type: String,
+    example: 'idle',
+  })
+  status: string; //ItemStatusEnum;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    type: ProductCategoryDto,
+  })
+  productCategoryDetails?: ProductCategoryDto;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    type: ProductDataDto,
+  })
+  productDetails: ProductDataDto;
+
+  @IsOptional()
+  @ApiResponseProperty({
     example: [
       {
         addonId: '5ce45d7606444f199acfba1e',
         value: 3,
       },
     ],
-    required: false,
-    description: 'An array of addons associated with the item.',
   })
-  addons?: ItemAddonDto[];
+  itemAddons?: ItemAddonDto[];
 
-  @IsNotEmpty()
-  @ValidateNested()
-  @Type(() => PricesDto)
+  @IsObject()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: CurrencyDto,
+  })
+  currency?: CurrencyDto;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    type: Object,
+  })
+  itemMeta?: Record<string, unknown>;
+
+  @IsDefined()
   @ApiProperty({
+    type: Object,
+    additionalProperties: true,
+    title: 'Product Attributes',
+    example: {
+      max_listeners: 15,
+      hdd: '1G',
+    },
+    description:
+      'These are all the attributes of the General Product as assigned by the Seller.',
+  })
+  productAttributes: Record<string, any>;
+
+  @IsOptional()
+  @IsBoolean()
+  @ApiResponseProperty({
+    type: Boolean,
+    example: true,
+  })
+  autoRenew?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: Boolean,
+    example: true,
+  })
+  transferredOut?: boolean;
+
+  @IsOptional()
+  @IsMongoId()
+  @ApiResponseProperty({
+    type: String,
+    example: '5ce45d7606444f199acfba1e',
+  })
+  transferredFromUserId?: string;
+
+  @IsBoolean()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: Boolean,
+    example: true,
+  })
+  expired?: boolean;
+
+  @IsString()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+    example: 'comment',
+  })
+  parentComment?: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+    example: 'comment',
+  })
+  userComment?: string;
+
+  @IsObject()
+  @IsOptional()
+  @ApiPropertyOptional({
     type: PricesDto,
-    required: true,
-    description: 'The price information for the item.',
   })
   price: PricesDto;
 
-  @IsNotEmpty()
-  @IsEnum(DurationEnum)
-  @ApiProperty({
+  @IsOptional()
+  @IsNumber()
+  @ApiResponseProperty({
     type: Number,
-    required: true,
     enum: DurationEnum,
     example: DurationEnum.ONE_YEAR,
-    description:
-      'The duration of the item in a specific unit (e.g., days, months, years).',
   })
   duration: DurationEnum;
 
+  @IsMongoId({ each: true })
   @IsOptional()
-  @ApiProperty({
+  @IsArray()
+  @ApiResponseProperty({
+    type: String,
+  })
+  bundles?: string[];
+
+  @IsMongoId()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+    // title: "id of items it is bundled with",
+  })
+  bundledWith?: string;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    example: ['5ce45d7606444f199acfba1e'],
+  })
+  ipIds?: string[];
+
+  @IsString({ each: true })
+  @IsArray()
+  @IsOptional()
+  @ApiResponseProperty({
+    type: String,
+  })
+  additionalNotificationEmails?: string[];
+
+  @IsOptional()
+  @ApiResponseProperty()
+  domainNameId?: string;
+
+  @IsOptional()
+  @ApiResponseProperty({
+    type: AffiliateDto,
+  })
+  affiliateData?: AffiliateDto;
+
+  @IsOptional()
+  @IsString()
+  @IsDateString({ strict: true })
+  @ApiPropertyOptional({
     type: Date,
-    required: false,
-    title: 'Start Date',
+    title: 'start date',
     example: '2019-09-26T07:58:30.996+0000',
-    description: 'The start date for the item.',
   })
   startDate?: Date;
 
   @IsOptional()
-  @ApiProperty({
+  @IsString()
+  @IsDateString({ strict: true })
+  @ApiPropertyOptional({
     type: Date,
-    required: false,
-    title: 'End Date',
+    title: 'end date',
     example: '2019-09-26T07:58:30.996+0000',
-    description: 'The end date for the item.',
   })
   endDate?: Date;
+
+  @IsOptional()
+  @ApiResponseProperty()
+  timesPostponed?: Date[];
+
+  @ApiResponseProperty()
+  @IsOptional()
+  meta?: unknown;
+
+  @IsOptional()
+  @ApiResponseProperty()
+  createdAt?: Date;
+
+  @IsOptional()
+  @ApiResponseProperty()
+  updatedAt?: Date;
 }
