@@ -9,7 +9,6 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { EventsEnum } from '../src/enums/events.enum';
 import { JwtPayloadRequest } from './dtos/jwt-payload.request';
 import { ProductDataDto } from './dtos/product-data.dto';
 import { AuthGuard } from './auth/auth.guard';
@@ -19,6 +18,9 @@ import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
 import { ErrorResponseDto, TaskResponseDto } from './dtos/responses.dto';
 import { InvoiceContactDto } from './dtos/invoice-contact.dto';
 import { UserDataDto } from './dtos/user-data,dto';
+import { EventsEnum } from './enums/events.enum';
+import { InvoiceDto } from './dtos/invoice.dto';
+import { ItemDto } from './dtos/item.dto';
 
 @Controller('event')
 @ApiTags('Events')
@@ -757,7 +759,7 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_SETTING_REMOVED)
+  @Post(EventsEnum.USER_ROLES_UPDATED)
   async updateUserRoles(
     @Request() request: Request & JwtPayloadRequest,
     @Body() requestBody: UserDataDto & { roles: object },
@@ -869,6 +871,85 @@ export class EventController {
     return;
   }
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Product Category
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product Category created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_CATEGORY_CREATED)
+  async createProductCategory(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { productCategory: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product Category updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_CATEGORY_UPDATED)
+  async updateProductCategory(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { productCategory: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product Category deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_CATEGORY_DELETED)
+  async deleteProductCategory(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { productCategory: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Invoice Contact
+
   @ApiResponse({
     status: 201,
     description: 'Contact created successfully',
@@ -938,6 +1019,565 @@ export class EventController {
     return;
   }
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Invoice
+
+  @ApiResponse({
+    status: 201,
+    description: 'Invoice created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.INVOICE_CREATED)
+  async createInvoice(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: InvoiceDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Invoice updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.INVOICE_UPDATED)
+  async updateInvoice(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: InvoiceDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Invoice deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.INVOICE_DELETED)
+  async deleteInvoice(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: InvoiceDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Order
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_CREATED)
+  async createOrder(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { order: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order status is in progress',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_STATUS_INPROGRESS)
+  async setOrderStatusInProgress(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { orderStatus: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order status is completed',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_STATUS_COMPLETED)
+  async setOrderStatusCompleted(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { orderStatus: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order status is Cancelled',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_STATUS_CANCELED)
+  async setOrderStatusCancelled(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { orderStatus: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order status is refunded',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_STATUS_REFUNDED)
+  async setOrderStatusRefunded(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { orderStatus: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'insufficient balance',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_INSUFFICIENT_BALANCE)
+  async OrderInsufficientBalance(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { order: object; balance: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Order deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ORDER_DELETED)
+  async deleteOrder(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { order: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Setting
+
+  @ApiResponse({
+    status: 201,
+    description: 'Setting created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.SETTING_CREATED)
+  async createSetting(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Setting: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Setting updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.SETTING_UPDATED)
+  async updateSetting(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Setting: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Setting deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.SETTING_DELETED)
+  async deleteSetting(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Setting: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Issue
+
+  @ApiResponse({
+    status: 201,
+    description: 'Issue created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ISSUE_CREATED)
+  async createIssue(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Issue: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Issue updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ISSUE_UPDATED)
+  async updateIssue(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Issue: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Issue deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ISSUE_DELETED)
+  async deleteIssue(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Issue: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Task
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_CREATED)
+  async createTask(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_UPDATED)
+  async updateTask(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_DELETED)
+  async deleteTask(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task canceled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_CANCELED)
+  async cancelTask(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task is in progress',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_INPROGRESS)
+  async setTaskInProgress(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task Completed successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_COMPLETED)
+  async completeTask(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Task percentage was updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.TASK_UPDATE_PERCENTAGE)
+  async updateTaskPercentage(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { Task: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Product
+
   @ApiResponse({
     status: 201,
     description: 'Product created successfully',
@@ -1006,6 +1646,566 @@ export class EventController {
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product auto renewed successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_AUTO_RENEW_UPDATED)
+  async autoRenewProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product enabled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_ENABLED)
+  async enableProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Product disabled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.PRODUCT_DISABLED)
+  async disableProduct(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ProductDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //IP Group
+
+  @ApiResponse({
+    status: 201,
+    description: 'IP group created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_GROUP_CREATED)
+  async createIPGroup(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IPGroup: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'IP group updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_GROUP_UPDATED)
+  async updateIPGroup(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IPGroup: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Ip group deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_GROUP_DELETED)
+  async deleteIpGroup(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IPGroup: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //IP
+
+  @ApiResponse({
+    status: 201,
+    description: 'IP created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_CREATED)
+  async createIP(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IP: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'IP updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_UPDATED)
+  async updateIP(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IP: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Ip deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.IP_DELETED)
+  async deleteIp(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: { IP: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //IP
+
+  @ApiResponse({
+    status: 201,
+    description: 'Item created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_CREATED)
+  async createItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Item updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_UPDATED)
+  async updateItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Item deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_DELETED)
+  async deleteItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'Item Ip attached successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_IP_ATTACHED)
+  async attachIpToItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { IP: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item ip detached successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_IP_DETACHED)
+  async detachIpfromItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { IP: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item detached from order successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_DETACHED_FROM_ORDER)
+  async detachItemFromOrder(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { Order: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item postponed successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_POSTPONED)
+  async postponeItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item transfered in successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_TRANSFERRED_IN)
+  async transferedItemIn(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { transferredIn: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item cancelled successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_CANCELED)
+  async cancelItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item suspended successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_SUSPENDED)
+  async suspendItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item affiliate added successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_AFFILIATE_ADDED)
+  async addedItemToAffiliate(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { Affiliate: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item bundle attached successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_BUNDLE_ATTACHED)
+  async attatchItemToBundle(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { Bundle: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item bundle dettached successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_BUNDLE_DETACHED)
+  async dettachItemFromBundle(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto & { Bundle: object },
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item set inactive successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_SET_INACTIVE)
+  async setItemInactive(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+  @ApiResponse({
+    status: 201,
+    description: 'Item proccessed successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.ITEM_PROCESSED)
+  async proccessItem(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: ItemDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   @ApiResponse({
     status: 200,
@@ -1282,7 +2482,7 @@ export class EventController {
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-  
+
   @ApiResponse({
     status: 200,
     description: 'Tld updated successfully',
@@ -1442,7 +2642,7 @@ export class EventController {
     @Body() requestBody: object,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
-  }  
+  }
 
   @ApiResponse({
     status: 200,
@@ -1627,7 +2827,7 @@ export class EventController {
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-  
+
   @ApiResponse({
     status: 200,
     description: 'Addon deleted successfully',
@@ -1674,7 +2874,6 @@ export class EventController {
     return;
   }
 
-
   @ApiResponse({
     status: 200,
     description: 'Payment updated successfully',
@@ -1697,5 +2896,4 @@ export class EventController {
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
 }
