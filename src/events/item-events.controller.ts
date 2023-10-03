@@ -18,6 +18,7 @@ import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { UserDataDto } from '../dtos/user-data,dto';
 import { EventsEnum } from '../enums/events.enum';
+import { ItemDto } from '../dtos/item.dto';
 
 @Controller('event')
 @ApiTags('Events')
@@ -27,31 +28,8 @@ import { EventsEnum } from '../enums/events.enum';
 @UseFilters(new ApiExceptionFilter())
 export class EventController {
   @ApiResponse({
-    status: 200,
-    description: 'User created successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(200)
-  @Post(EventsEnum.USER_CREATED)
-  async createUser(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User updated successfully',
+    status: 201,
+    description: 'Item created successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -64,40 +42,17 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_UPDATED)
-  async updateUser(
+  @Post(EventsEnum.ITEM_CREATED)
+  async createItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
 
   @ApiResponse({
-    status: 200,
-    description: 'User deleted successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(200)
-  @Post(EventsEnum.USER_DELETED)
-  async deleteUser(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User banned successfully',
+    status: 201,
+    description: 'Item updated successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -110,17 +65,17 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_BANNED)
-  async banUser(
+  @Post(EventsEnum.ITEM_UPDATED)
+  async updateItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
 
   @ApiResponse({
-    status: 200,
-    description: 'User unbanned successfully',
+    status: 201,
+    description: 'Item deleted successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -133,17 +88,17 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_UNBANNED)
-  async unbanUser(
+  @Post(EventsEnum.ITEM_DELETED)
+  async deleteItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
 
   @ApiResponse({
-    status: 200,
-    description: 'User added to org successfully',
+    status: 201,
+    description: 'Item Ip attached successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -156,17 +111,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_ADDED_ORGANIZATION_ACCESS)
-  async addedUserOrganizationAccess(
+  @Post(EventsEnum.ITEM_IP_ATTACHED)
+  async attachIpToItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { IP: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User removed from org successfully',
+    status: 201,
+    description: 'Item ip detached successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -179,17 +133,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_REMOVED_ORGANIZATION_ACCESS)
-  async removedUserOrganizationAccess(
+  @Post(EventsEnum.ITEM_IP_DETACHED)
+  async detachIpfromItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { IP: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User locked successfully',
+    status: 201,
+    description: 'Item detached from order successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -202,17 +155,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_LOCKED)
-  async lockUser(
+  @Post(EventsEnum.ITEM_DETACHED_FROM_ORDER)
+  async detachItemFromOrder(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { Order: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'Users credit balance updated successfully',
+    status: 201,
+    description: 'Item postponed successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -225,17 +177,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_CREDIT_BALANCE_UPDATED)
-  async updateUserCreditBalance(
+  @Post(EventsEnum.ITEM_POSTPONED)
+  async postponeItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User unlocked successfully',
+    status: 201,
+    description: 'Item transfered in successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -248,17 +199,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_UNLOCKED)
-  async unlockUser(
+  @Post(EventsEnum.ITEM_TRANSFERRED_IN)
+  async transferedItemIn(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { transferredIn: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User password updated successfully',
+    status: 201,
+    description: 'Item cancelled successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -271,17 +221,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_PASSWORD_UPDATED)
-  async updateUserPassword(
+  @Post(EventsEnum.ITEM_CANCELED)
+  async cancelItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User email update successfully',
+    status: 201,
+    description: 'Item suspended successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -294,17 +243,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_EMAIL_UPDATED)
-  async updateUserEmail(
+  @Post(EventsEnum.ITEM_SUSPENDED)
+  async suspendItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User currency updated successfully',
+    status: 201,
+    description: 'Item affiliate added successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -317,17 +265,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_CURRENCY_UPDATED)
-  async updateUserCurrency(
+  @Post(EventsEnum.ITEM_AFFILIATE_ADDED)
+  async addedItemToAffiliate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { Affiliate: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User invoice contact updated successfully',
+    status: 201,
+    description: 'Item bundle attached successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -340,18 +287,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_INVOICE_CONTACT_UPDATED)
-  async updateUserInvoiceContact(
+  @Post(EventsEnum.ITEM_BUNDLE_ATTACHED)
+  async attatchItemToBundle(
     @Request() request: Request & JwtPayloadRequest,
-    @Body()
-    requestBody: { user: UserDataDto; invoice_contact: InvoiceContactDto },
+    @Body() requestBody: ItemDto & { Bundle: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User policy updated successfully',
+    status: 201,
+    description: 'Item bundle dettached successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -364,17 +309,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_POLICY_UPDATED)
-  async updateUserPolicy(
+  @Post(EventsEnum.ITEM_BUNDLE_DETACHED)
+  async dettachItemFromBundle(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto,
+    @Body() requestBody: ItemDto & { Bundle: object },
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User languages updated successfully',
+    status: 201,
+    description: 'Item set inactive successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -387,17 +331,16 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_LANGUAGES_UPDATED)
-  async updateUserLanguage(
+  @Post(EventsEnum.ITEM_SET_INACTIVE)
+  async setItemInactive(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { language: string },
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
-
   @ApiResponse({
-    status: 200,
-    description: 'User custom price policues updated successfully',
+    status: 201,
+    description: 'Item proccessed successfully',
     schema: {
       oneOf: [
         { type: 'object', properties: { success: { type: 'boolean' } } },
@@ -410,355 +353,10 @@ export class EventController {
     description: 'Error Response',
   })
   @HttpCode(201)
-  @Post(EventsEnum.USER_CUSTOM_PRICE_POLICIES_UPDATED)
-  async updateUserCustomPricePolicies(
+  @Post(EventsEnum.ITEM_PROCESSED)
+  async proccessItem(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { customPricePolicies: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User custom addon price policies updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_CUSTOM_ADDON_PRICE_POLICIES_UPDATED)
-  async updateUserCustomAddonPolicies(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { addonPolicies: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User custom affiliate added successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_CUSTOM_AFFILIATE_ADDED)
-  async addUserCustomAffiliate(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { affiliate: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User custom affiliate removed successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_CUSTOM_AFFILIATE_REMOVED)
-  async removeUserCustomAffiliate(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { affiliate: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User invoice interval updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_INVOICE_INTERVAL_UPDATED)
-  async updateUserInvoiceInterval(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { invoiceInterval: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User notification email removed successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_ADDITIONAL_NOTIFICATION_EMAIL_REMOVED)
-  async removeUserAdditionalNotificationEmail(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { addNotificationEmail: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User notification email added successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_ADDITIONAL_NOTIFICATION_EMAIL_ADDED)
-  async addUserAdditionalNotificationEmail(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { language: string },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User comment added successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_COMMENT_ADDED)
-  async addUserComment(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { comment: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User comment updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_COMMENT_UPDATED)
-  async updateUserComment(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { comment: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User comment removed successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_COMMENT_REMOVED)
-  async removeUserComment(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { comment: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User tags updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_TAGS_UPDATED)
-  async updateUserTags(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { tags: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User setting added successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_SETTING_ADDED)
-  async addUserSetting(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { setting: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User setting updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_SETTING_UPDATED)
-  async updateUserSetting(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { setting: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User setting removed successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_SETTING_REMOVED)
-  async removeUserSetting(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { setting: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User started selling successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_START_SELLING)
-  async UserStartSelling(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { startSelling: object },
-  ): Promise<{ success: boolean } | TaskResponseDto> {
-    return;
-  }
-
-  @ApiResponse({
-    status: 200,
-    description: 'User roles updated successfully',
-    schema: {
-      oneOf: [
-        { type: 'object', properties: { success: { type: 'boolean' } } },
-        { $ref: getSchemaPath(TaskResponseDto) },
-      ],
-    },
-  })
-  @ApiResponse({
-    type: ErrorResponseDto,
-    description: 'Error Response',
-  })
-  @HttpCode(201)
-  @Post(EventsEnum.USER_ROLES_UPDATED)
-  async updateUserRoles(
-    @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: UserDataDto & { roles: object },
+    @Body() requestBody: ItemDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
