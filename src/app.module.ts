@@ -6,11 +6,13 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [AuthModule,
+  imports: [
+    AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    HttpModule,],
+    HttpModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
