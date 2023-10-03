@@ -6,7 +6,11 @@ import {
   BadRequestException,
   ValidationError,
 } from '@nestjs/common';
-import { ErrorResponseDto, InfoResponseDto } from './dtos/responses.dto';
+import {
+  ErrorResponseDto,
+  InfoResponseDto,
+  TaskResponseDto,
+} from './dtos/responses.dto';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -32,7 +36,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config, {
-    extraModels: [ErrorResponseDto, InfoResponseDto],
+    extraModels: [ErrorResponseDto, InfoResponseDto, TaskResponseDto],
   });
 
   SwaggerModule.setup('api', app, document);

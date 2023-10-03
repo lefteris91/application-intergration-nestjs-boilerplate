@@ -32,7 +32,7 @@ export class InfoResponseDto {
       type: String,
       required: true,
       description: 'Name of the Integration',
-      example: 'Elorus',
+      example: 'An application name',
     })
     name: string;
   
@@ -53,8 +53,22 @@ export class InfoResponseDto {
       type: String,
       required: false,
       description: 'Description of the integration',
-      example: 'Integration description',
+      example: 'Application description',
     })
     description?: string;
 
+}
+
+export class TaskResponseDto {
+
+  @IsString()
+  @ApiProperty({
+    type: String,
+    required: true,
+    readOnly: true,
+    description:
+      "This is the taskId returned by the provider when an operation cannot be done immediately, thus indicating that the operation has started.",
+  })
+  taskId: string;
+  
 }
