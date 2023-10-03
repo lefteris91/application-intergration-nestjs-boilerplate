@@ -18,6 +18,7 @@ import { senderIsHoster, hasAdminRights } from './auth/auth.interceptors';
 import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
 import { ErrorResponseDto, TaskResponseDto } from './dtos/responses.dto';
 import { InvoiceContactDto } from './dtos/invoice-contact.dto';
+import { UserDataDto } from './dtos/user-data,dto';
 
 @Controller('event')
 @ApiTags('Events')
@@ -26,6 +27,98 @@ import { InvoiceContactDto } from './dtos/invoice-contact.dto';
 @UseInterceptors(hasAdminRights)
 @UseFilters(new ApiExceptionFilter())
 export class EventController {
+  @ApiResponse({
+    status: 200,
+    description: 'User created successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.USER_CREATED)
+  async createUser(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: UserDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'User updated successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.USER_UPDATED)
+  async updateUser(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: UserDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'User deleted successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.USER_DELETED)
+  async deleteUser(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: UserDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
+  @ApiResponse({
+    status: 201,
+    description: 'User banned successfully',
+    schema: {
+      oneOf: [
+        { type: 'object', properties: { success: { type: 'boolean' } } },
+        { $ref: getSchemaPath(TaskResponseDto) },
+      ],
+    },
+  })
+  @ApiResponse({
+    type: ErrorResponseDto,
+    description: 'Error Response',
+  })
+  @HttpCode(201)
+  @Post(EventsEnum.USER_CREATED)
+  async banUser(
+    @Request() request: Request & JwtPayloadRequest,
+    @Body() requestBody: UserDataDto,
+  ): Promise<{ success: boolean } | TaskResponseDto> {
+    return;
+  }
+
   @ApiResponse({
     status: 201,
     description: 'Contact created successfully',
