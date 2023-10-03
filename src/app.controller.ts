@@ -12,7 +12,12 @@ import { AppService } from './app.service';
 import { ApiExceptionFilter } from './api.exception.filter';
 import { AuthGuard } from './auth/auth.guard';
 import { hasAdminRights, senderIsHoster } from './auth/auth.interceptors';
-import { ApiOkResponse, ApiResponse , ApiTags , ApiNoContentResponse } from '@nestjs/swagger';
+import {
+  ApiOkResponse,
+  ApiResponse,
+  ApiTags,
+  ApiNoContentResponse,
+} from '@nestjs/swagger';
 import { ErrorResponseDto, InfoResponseDto } from './dtos/responses.dto';
 import { JwtPayloadRequest } from './dtos/jwt-payload.request';
 
