@@ -53,6 +53,7 @@ export class AppController {
   }
 
   @HttpCode(200)
+  @ApiTags('Install')
   @ApiNoContentResponse({})
   @ApiResponse({
     type: ErrorResponseDto,
@@ -66,6 +67,7 @@ export class AppController {
   }
 
   @HttpCode(200)
+  @ApiTags('Uninstall')
   @ApiNoContentResponse({})
   @ApiResponse({
     type: ErrorResponseDto,
