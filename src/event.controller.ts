@@ -15,7 +15,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { ApiExceptionFilter } from './api.exception.filter';
 import { senderIsHoster, hasAdminRights } from './auth/auth.interceptors';
 import { ApiResponse, ApiTags, getSchemaPath } from '@nestjs/swagger';
-import { ErrorResponseDto } from './dtos/responses.dto';
+import { ErrorResponseDto, TaskResponseDto } from './dtos/responses.dto';
+import { InvoiceContactDto } from './dtos/invoice-contact.dto';
 
 @Controller('event')
 @ApiTags('Events')
