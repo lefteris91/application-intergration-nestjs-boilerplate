@@ -52,6 +52,8 @@ export class AppController {
       name: 'The name of the invoice provider',
       logo: 'Logo of the provider',
       description: 'A description of the provider',
+      listenEvents:[],
+      
     };
   }
 

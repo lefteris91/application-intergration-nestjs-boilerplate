@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsBase64, IsOptional, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsBase64,
+  IsObject,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { TabDto } from './application-tabs.dto';
 
 export class ErrorResponseDto {
   @IsString()
@@ -53,6 +60,32 @@ export class InfoResponseDto {
     example: 'Application description',
   })
   description?: string;
+
+  @IsOptional()
+  @IsObject()
+  @ApiProperty({
+    type: [TabDto],
+    required: false,
+    description: 'Application Integration tabs',
+    example: [
+      {
+        label: 'Tab 1',
+        url: 'https://example.com/tab1',
+      },
+    ],
+  })
+  applicationTabs?: TabDto[];
+
+  @IsArray()
+  @IsString({ each: true })
+  @ApiProperty({
+    type: [String],
+    required: true,
+    description:
+      'Events from hoster the integration is listening to if empty the intergration does not listen to any events',
+    example: [`event/`],
+  })
+  listenEvents: string[];
 }
 
 export class TaskResponseDto {
