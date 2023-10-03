@@ -1,10 +1,4 @@
-import {
-  ArrayUnique,
-  IsArray,
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-} from 'class-validator';
+import { ArrayUnique, IsArray, IsEmail, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class EmailReceiverDto {

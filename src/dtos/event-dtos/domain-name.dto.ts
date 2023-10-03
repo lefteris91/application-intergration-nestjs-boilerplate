@@ -1,3 +1,1 @@
-export class DomainNameDto {
-    
-}
+export class DomainNameDto {}

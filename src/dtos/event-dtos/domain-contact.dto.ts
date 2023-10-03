@@ -1,3 +1,1 @@
-export class DomainContactDto {
-    
-}
+export class DomainContactDto {}

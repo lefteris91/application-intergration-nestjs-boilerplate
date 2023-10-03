@@ -24,5 +24,5 @@ export class PaymentMethodDto {
 }
 
 export class PaymentMethodsDto {
-    payment_methods: PaymentMethodDto[]
+  payment_methods: PaymentMethodDto[];
 }
