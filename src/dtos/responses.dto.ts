@@ -6,7 +6,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { TabDto } from './application-tabs.dto';
+import { MenuItemDto } from './application-menu-item.dto';
 
 export class ErrorResponseDto {
   @IsString()
@@ -64,7 +64,7 @@ export class InfoResponseDto {
   @IsOptional()
   @IsObject()
   @ApiProperty({
-    type: [TabDto],
+    type: [MenuItemDto],
     required: false,
     description: 'Application Integration tabs',
     example: [
@@ -74,7 +74,7 @@ export class InfoResponseDto {
       },
     ],
   })
-  applicationTabs?: TabDto[];
+  applicationMenuItems?: MenuItemDto[];
 
   @IsArray()
   @IsString({ each: true })
