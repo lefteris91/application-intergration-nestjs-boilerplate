@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { CouponDto } from '../dtos/event-dtos/coupon.dto';
+import { CouponsDto } from '../dtos/event-dtos/coupon.dto';
 
 @Controller('event')
 @ApiTags('Coupon Events')
@@ -43,7 +43,7 @@ export class CouponEventController {
   @Post(EventsEnum.COUPON_CREATED)
   async createCoupon(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: CouponDto,
+    @Body() requestBody: CouponsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class CouponEventController {
   @Post(EventsEnum.COUPON_UPDATED)
   async updateCoupon(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: CouponDto,
+    @Body() requestBody: CouponsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class CouponEventController {
   @Post(EventsEnum.COUPON_DELETED)
   async deleteCoupon(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: CouponDto,
+    @Body() requestBody: CouponsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

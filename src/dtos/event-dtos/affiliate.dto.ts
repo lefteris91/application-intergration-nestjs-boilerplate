@@ -4,3 +4,7 @@ export class AffiliateDto {
   is_company: boolean;
   company_id?: string;
 }
+
+export class AffiliatesDto {
+  affiliates: AffiliateDto[];
+}

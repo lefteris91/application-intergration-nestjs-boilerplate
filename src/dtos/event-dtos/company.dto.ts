@@ -13,3 +13,7 @@ export class CompanyDto {
   address2?: string;
   address3?: string;
 }
+
+export class CompaniesDto {
+  companies: CompanyDto[];
+}

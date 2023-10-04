@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { AffiliateDto } from '../dtos/event-dtos/affiliate.dto';
+import {  AffiliatesDto } from '../dtos/event-dtos/affiliate.dto';
 
 @Controller('event')
 @ApiTags('Affiliate Events')
@@ -43,7 +43,7 @@ export class AffiliateEventController {
   @Post(EventsEnum.AFFILIATE_CREATED)
   async createAffiliate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: AffiliateDto,
+    @Body() requestBody: AffiliatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class AffiliateEventController {
   @Post(EventsEnum.AFFILIATE_UPDATED)
   async updateAffiliate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: AffiliateDto,
+    @Body() requestBody: AffiliatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class AffiliateEventController {
   @Post(EventsEnum.AFFILIATE_DELETED)
   async deleteAffiliate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: AffiliateDto,
+    @Body() requestBody: AffiliatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
