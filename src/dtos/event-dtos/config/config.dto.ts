@@ -1,3 +1,3 @@
-export class Config<T> {
+export interface Config<T> {
   [key: string]: T;
 }
