@@ -50,3 +50,8 @@ export class DomainContactDto {
   @ApiPropertyOptional()
   additional?: string[]; //contactAdditionalDto;
 }
+
+export class DomainContactsDto {
+  count: number;
+  domain_contact: DomainContactDto[];
+}

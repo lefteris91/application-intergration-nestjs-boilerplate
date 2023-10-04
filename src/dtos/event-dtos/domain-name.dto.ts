@@ -73,3 +73,8 @@ export class DomainNameDto {
   @ApiProperty({ type: ProductDataDto })
   productData: ProductDataDto;
 }
+
+export class DomainNamesDto {
+  count: number;
+  domain_names: DomainNameDto[];
+}
