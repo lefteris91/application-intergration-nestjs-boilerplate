@@ -43,7 +43,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_CREATED)
   async createSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: SettingsDto ,
+    @Body() requestBody: SettingsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_UPDATED)
   async updateSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: SettingsDto ,
+    @Body() requestBody: SettingsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_DELETED)
   async deleteSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: SettingsDto ,
+    @Body() requestBody: SettingsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
