@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { TemplateDto } from '../dtos/event-dtos/template.dto';
+import { TemplatesDto } from '../dtos/event-dtos/template.dto';
 
 @Controller('event')
 @ApiTags('Template Events')
@@ -43,7 +43,7 @@ export class TemplateEventController {
   @Post(EventsEnum.TEMPLATE_CREATED)
   async createTemplate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateDto,
+    @Body() requestBody: TemplatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class TemplateEventController {
   @Post(EventsEnum.TEMPLATE_UPDATED)
   async updateTemplate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateDto,
+    @Body() requestBody: TemplatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class TemplateEventController {
   @Post(EventsEnum.TEMPLATE_DELETED)
   async deleteTemplate(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateDto,
+    @Body() requestBody: TemplatesDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

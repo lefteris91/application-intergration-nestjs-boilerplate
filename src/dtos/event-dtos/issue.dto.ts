@@ -3,3 +3,6 @@ export class IssueDto {
   title: string;
   description: string;
 }
+export class IssuesDto {
+  issues: IssueDto[];
+}

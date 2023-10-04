@@ -5,3 +5,7 @@ export class IpGroupDto {
   ip_addresses: IpDto[];
   group_id: string;
 }
+
+export class IpGroups {
+  ip_groups: IpGroupDto[];
+}

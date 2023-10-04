@@ -4,5 +4,10 @@ import { NotificationInfoDto } from './intergration-dtos-types/notifications-inf
 import { ProductInfoDto } from './intergration-dtos-types/product-info.dto';
 
 export class ServiceProviderDto {
+  id: string;
   info: NotificationInfoDto | InvoiceInfoDto | ProductInfoDto | InfoResponseDto; // payment + domain name to be added
+}
+
+export class ServiceProvidersDto {
+  service_providers: ServiceProviderDto[];
 }

@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { TemplateProviderDto } from '../dtos/event-dtos/template-provider.dto';
+import { TemplateProvidersDto } from '../dtos/event-dtos/template-provider.dto';
 
 @Controller('event')
 @ApiTags('Template Provider Events')
@@ -43,7 +43,7 @@ export class TemplateProviderEventController {
   @Post(EventsEnum.TEMPLATE_PROVIDER_CREATED)
   async createTemplateProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateProviderDto,
+    @Body() requestBody: TemplateProvidersDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class TemplateProviderEventController {
   @Post(EventsEnum.TEMPLATE_PROVIDER_UPDATED)
   async updateTemplateProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateProviderDto,
+    @Body() requestBody: TemplateProvidersDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class TemplateProviderEventController {
   @Post(EventsEnum.TEMPLATE_PROVIDER_DELETED)
   async deleteTemplateProvider(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TemplateProviderDto,
+    @Body() requestBody: TemplateProvidersDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

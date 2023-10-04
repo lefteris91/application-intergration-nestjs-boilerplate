@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { TldDto } from '../dtos/event-dtos/tld-events.dto';
+import { TldsDto } from '../dtos/event-dtos/tld-events.dto';
 
 @Controller('event')
 @ApiTags('TLD Events')
@@ -43,7 +43,7 @@ export class TldEventController {
   @Post(EventsEnum.TLD_CREATED)
   async createTld(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TldDto,
+    @Body() requestBody: TldsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class TldEventController {
   @Post(EventsEnum.TLD_UPDATED)
   async updateTld(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TldDto,
+    @Body() requestBody: TldsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class TldEventController {
   @Post(EventsEnum.TLD_DELETED)
   async deleteTld(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TldDto,
+    @Body() requestBody: TldsDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
