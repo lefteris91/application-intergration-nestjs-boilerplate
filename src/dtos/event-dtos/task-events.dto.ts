@@ -8,5 +8,6 @@ export class TaskDto {
 }
 
 export class TasksDto {
+  count: number;
   tasks: TaskDto[];
 }

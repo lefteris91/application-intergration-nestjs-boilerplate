@@ -15,5 +15,6 @@ export class CompanyDto {
 }
 
 export class CompaniesDto {
+  count: number;
   companies: CompanyDto[];
 }

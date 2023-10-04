@@ -5,5 +5,6 @@ export class MessageDto {
 }
 
 export class MessagesDto {
+  count: number;
   messages: MessageDto[];
 }

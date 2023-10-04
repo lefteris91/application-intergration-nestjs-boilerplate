@@ -79,5 +79,6 @@ export class InvoiceDto {
 }
 
 export class InvoicesDto {
+  count: number;
   invoices: InvoiceDto[];
 }

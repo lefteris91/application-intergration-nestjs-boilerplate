@@ -20,5 +20,6 @@ export class OrderDto {
 }
 
 export class OrdersDto {
+  count: number;
   orders: OrderDto;
 }

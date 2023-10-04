@@ -235,5 +235,6 @@ export class InvoiceContactDto {
 }
 
 export class InvoiceContactsDto {
+  count: number;
   invoices: InvoiceContactDto[];
 }

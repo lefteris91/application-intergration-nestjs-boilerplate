@@ -5,5 +5,6 @@ export class PolicyDto {
 }
 
 export class PoliciesDto {
+  count: number;
   policies: PolicyDto[];
 }

@@ -7,5 +7,6 @@ export class IpGroupDto {
 }
 
 export class IpGroups {
+  count: number;
   ip_groups: IpGroupDto[];
 }

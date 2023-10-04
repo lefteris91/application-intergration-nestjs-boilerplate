@@ -101,5 +101,6 @@ export class ProductDataDto {
 }
 
 export class ProductsDto {
+  count: number;
   products: ProductDataDto[];
 }

@@ -9,5 +9,6 @@ export class ServiceProviderDto {
 }
 
 export class ServiceProvidersDto {
+  count: number;
   service_providers: ServiceProviderDto[];
 }

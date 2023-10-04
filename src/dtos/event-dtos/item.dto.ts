@@ -271,5 +271,6 @@ export class ItemDto {
 }
 
 export class ItemsDto {
+  count: number;
   items: ItemDto[];
 }

@@ -9,5 +9,6 @@ export class TemplateProviderDto {
 }
 
 export class TemplateProvidersDto {
+  count: number;
   template_providers: TemplateProviderDto[];
 }

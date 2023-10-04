@@ -11,5 +11,6 @@ export class TemplateDto {
 }
 
 export class TemplatesDto {
+  count: number;
   templates: TemplateDto[];
 }

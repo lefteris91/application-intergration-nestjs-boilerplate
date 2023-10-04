@@ -4,5 +4,6 @@ export class IssueDto {
   description: string;
 }
 export class IssuesDto {
+  count: number;
   issues: IssueDto[];
 }

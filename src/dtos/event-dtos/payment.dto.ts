@@ -24,5 +24,6 @@ export class PaymentMethodDto {
 }
 
 export class PaymentMethodsDto {
+  count: number;
   payment_methods: PaymentMethodDto[];
 }

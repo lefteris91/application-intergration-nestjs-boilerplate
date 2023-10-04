@@ -7,5 +7,6 @@ export class TldDto {
 }
 
 export class TldsDto {
+  count: number;
   tlds: TldDto[];
 }

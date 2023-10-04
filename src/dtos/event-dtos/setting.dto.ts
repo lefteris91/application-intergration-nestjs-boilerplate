@@ -4,5 +4,6 @@ export class SettingDto {
 }
 
 export class SettingsDto {
+  count: number;
   settings: SettingDto[];
 }
