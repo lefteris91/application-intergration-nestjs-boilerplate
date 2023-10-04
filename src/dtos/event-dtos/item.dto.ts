@@ -269,3 +269,8 @@ export class ItemDto {
   @ApiResponseProperty()
   updatedAt?: Date;
 }
+
+export class ItemsDto {
+  count: number;
+  items: ItemDto[];
+}

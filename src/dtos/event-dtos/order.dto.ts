@@ -14,7 +14,12 @@ export class OrderDto {
   price: PricesDto;
   company: CompanyDto;
   user: UserDataDto;
-  coupons: CouponDto[];
+  coupons?: CouponDto[];
   total_amount: number;
   billing_address: AddressDto;
+}
+
+export class OrdersDto {
+  count: number;
+  orders: OrderDto;
 }

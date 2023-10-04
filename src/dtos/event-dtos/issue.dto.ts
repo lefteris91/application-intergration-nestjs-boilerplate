@@ -3,3 +3,7 @@ export class IssueDto {
   title: string;
   description: string;
 }
+export class IssuesDto {
+  count: number;
+  issues: IssueDto[];
+}

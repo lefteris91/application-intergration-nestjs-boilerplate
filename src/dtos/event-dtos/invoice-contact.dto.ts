@@ -233,3 +233,8 @@ export class InvoiceContactDto {
   })
   currency: string;
 }
+
+export class InvoiceContactsDto {
+  count: number;
+  invoices: InvoiceContactDto[];
+}

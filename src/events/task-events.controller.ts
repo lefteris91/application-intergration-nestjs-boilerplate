@@ -16,7 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
-import { TaskDto } from '../dtos/event-dtos/task-events.dto';
+import { TasksDto } from '../dtos/event-dtos/task-events.dto';
 
 @Controller('event')
 @ApiTags('Task Events')
@@ -43,7 +43,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_CREATED)
   async createTask(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -66,7 +66,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_UPDATED)
   async updateTask(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -89,7 +89,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_DELETED)
   async deleteTask(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -112,7 +112,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_CANCELED)
   async cancelTask(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -135,7 +135,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_INPROGRESS)
   async setTaskInProgress(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -158,7 +158,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_COMPLETED)
   async completeTask(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -181,7 +181,7 @@ export class TaskEventController {
   @Post(EventsEnum.TASK_UPDATE_PERCENTAGE)
   async updateTaskPercentage(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: TaskDto,
+    @Body() requestBody: TasksDto,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }

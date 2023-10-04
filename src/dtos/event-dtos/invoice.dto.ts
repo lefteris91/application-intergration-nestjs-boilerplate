@@ -77,3 +77,8 @@ export class InvoiceDto {
   payment_methods: PaymentMethodsDto[];
   due_date: any;
 }
+
+export class InvoicesDto {
+  count: number;
+  invoices: InvoiceDto[];
+}

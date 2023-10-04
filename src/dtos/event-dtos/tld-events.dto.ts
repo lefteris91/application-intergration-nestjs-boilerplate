@@ -5,3 +5,8 @@ export class TldDto {
   availabilityStatus?: string;
   registrationRequirements?: string;
 }
+
+export class TldsDto {
+  count: number;
+  tlds: TldDto[];
+}

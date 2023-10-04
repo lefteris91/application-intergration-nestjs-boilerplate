@@ -5,5 +5,6 @@ export class ProductCategoryDto {
 }
 
 export class ProductCategoriesDto {
+  count: number;
   categories: ProductCategoryDto[];
 }

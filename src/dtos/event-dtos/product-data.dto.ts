@@ -99,3 +99,8 @@ export class ProductDataDto {
   })
   ips?: IpDto[];
 }
+
+export class ProductsDto {
+  count: number;
+  products: ProductDataDto[];
+}

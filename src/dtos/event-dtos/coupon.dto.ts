@@ -5,5 +5,6 @@ export class CouponDto {
 }
 
 export class CouponsDto {
+  count: number;
   coupons: CouponDto[];
 }

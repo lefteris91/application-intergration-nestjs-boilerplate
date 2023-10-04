@@ -6,5 +6,6 @@ export class AffiliateDto {
 }
 
 export class AffiliatesDto {
+  count: number;
   affiliates: AffiliateDto[];
 }
