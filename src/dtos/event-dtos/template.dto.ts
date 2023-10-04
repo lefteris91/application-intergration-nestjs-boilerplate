@@ -1,5 +1,3 @@
-import { RecordDto } from './types/types.dto';
-
 export class TemplateDto {
   id: string;
   name: string;
