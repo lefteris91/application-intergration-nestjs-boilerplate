@@ -1,3 +1,6 @@
+import { Config } from './config/config.dto';
+
 export class SettingsDto {
-  config: Record<string, any>[];
+  id: string;
+  config: Config<any>;
 }

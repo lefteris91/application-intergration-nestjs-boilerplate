@@ -1,3 +1,4 @@
+import { Config } from './config/config.dto';
 import { TemplateDto } from './template.dto';
 
 export class TemplateProviderDto {
@@ -5,5 +6,5 @@ export class TemplateProviderDto {
   title: string;
   path: string;
   template: TemplateDto;
-  config: Record<string, any>;
+  config: Config<any>;
 }
