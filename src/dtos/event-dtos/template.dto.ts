@@ -1,7 +1,9 @@
-import { TemplateProviderDto } from './template-provider.dto';
-
 export class TemplateDto {
   id: string;
   name: string;
   content: string;
+  owner: string;
+  version: number;
+  tags: string[];
+  customFields: Record<string, any>;
 }

@@ -7,4 +7,5 @@ export class TemplateProviderDto {
   path: string;
   template: TemplateDto;
   config: Config<any>;
+  
 }
