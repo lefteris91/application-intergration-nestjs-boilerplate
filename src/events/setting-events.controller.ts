@@ -16,6 +16,7 @@ import { senderIsHoster, hasAdminRights } from '../auth/auth.interceptors';
 import { JwtPayloadRequest } from '../dtos/jwt-payload.request';
 import { TaskResponseDto, ErrorResponseDto } from '../dtos/responses.dto';
 import { EventsEnum } from '../enums/events.enum';
+import { SettingsDto } from '../dtos/event-dtos/setting.dto';
 
 @Controller('event')
 @ApiTags('Setting Events')
@@ -42,7 +43,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_CREATED)
   async createSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { Setting: object },
+    @Body() requestBody: SettingsDto ,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -65,7 +66,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_UPDATED)
   async updateSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { Setting: object },
+    @Body() requestBody: SettingsDto ,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
@@ -88,7 +89,7 @@ export class SettingEventController {
   @Post(EventsEnum.SETTING_DELETED)
   async deleteSetting(
     @Request() request: Request & JwtPayloadRequest,
-    @Body() requestBody: { Setting: object },
+    @Body() requestBody: SettingsDto ,
   ): Promise<{ success: boolean } | TaskResponseDto> {
     return;
   }
